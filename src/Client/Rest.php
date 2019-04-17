@@ -1,5 +1,5 @@
 <?php
-namespace Swoole\Client;
+namespace Listen\Swoole\Client;
 /**
  * Swoole WebService客户端
  * @author Tianfeng.Han

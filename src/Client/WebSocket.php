@@ -1,6 +1,6 @@
 <?php
 
-namespace Swoole\Client;
+namespace Listen\Swoole\Client;
 
 class WebSocket
 {

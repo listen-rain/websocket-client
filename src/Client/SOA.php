@@ -1,6 +1,6 @@
 <?php
 
-namespace Swoole\Client;
+namespace Listen\Swoole\Client;
 
 use Swoole\Core;
 use Swoole\Coroutine\RPC as CoRPC;

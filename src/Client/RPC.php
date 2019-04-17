@@ -1,5 +1,5 @@
 <?php
-namespace Swoole\Client;
+namespace Listen\Swoole\Client;
 use Swoole\Core;
 use Swoole\Exception\InvalidParam;
 use Swoole\Protocol\RPCServer;
@@ -93,7 +93,7 @@ class RPC
         {
             $type = RPCServer::DECODE_PHP;
         }
-        
+
         if ($type === RPCServer::DECODE_SWOOLE and (substr(PHP_VERSION, 0, 1) != '7'))
         {
             throw new \Exception("swoole_serialize only use in phpng");

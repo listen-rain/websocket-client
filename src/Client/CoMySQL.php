@@ -1,5 +1,5 @@
 <?php
-namespace Swoole\Client;
+namespace Listen\Swoole\Client;
 use Swoole\Database\MySQLi;
 use Swoole\Database\MySQLiRecord;
 
@@ -29,7 +29,7 @@ class CoMySQL
         //没有可用的连接
         if (count($this->pool) == 0)
         {
-            $db = new MySQLi($this->config);
+            $db = new \MySQLi($this->config);
             $db->connect();
             return $db;
         }
