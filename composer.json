@@ -1,6 +1,7 @@
 {
   "name": "listen/websocket-client",
   "description": "websocket client for php",
+  "version": "1.0.1",
   "license": "MIT",
   "authors": [
     {
