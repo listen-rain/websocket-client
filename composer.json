@@ -1,0 +1,23 @@
+{
+  "name": "listen/websocket-client",
+  "description": "websocket client for php",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "zhufengwei",
+      "email": "zhufengwei@aliyun.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Listen\\Swoole\\": "src/"
+    }
+  },
+  "minimum-stability": "dev",
+  "require-dev": {
+    "eaglewu/swoole-ide-helper": "dev-master"
+  }
+}
