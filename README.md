@@ -7,6 +7,14 @@ websocket-client 是一个支持 PHP 服务端连接 websocket 服务器的扩�
 
 ## 使用
 
+#### laravel | lumen
+
+```
+
+```
+
+#### 其它
+
 ```php
 try {
     // 实例化 websocket 客户端
