@@ -12,8 +12,7 @@
   ],
   "require": {
     "php": ">=7.1",
-    "illuminate/support": " ~5.5",
-    "laravel/lumen-framework": " ^5.5"
+    "illuminate/support": " ~5.5"
   },
   "autoload": {
     "psr-4": {
@@ -27,6 +26,7 @@
   },
   "minimum-stability": "dev",
   "require-dev": {
-    "eaglewu/swoole-ide-helper": "dev-master"
+    "eaglewu/swoole-ide-helper": "dev-master",
+    "laravel/lumen-framework": " ^5.5"
   }
 }

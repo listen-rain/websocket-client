@@ -6,7 +6,7 @@
  * Time: 10:05
  */
 
-namespace Listen\Swoole;
+namespace Listen\Swoole\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Listen\Swoole\Client\WebSocket;
@@ -19,7 +19,9 @@ class WebsocketProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->publishes([
+            __DIR__ . '/../../config/websocket_client.php' => base_path('config/websocket_client.php'),
+        ], 'swoole-websocket');
     }
 
     /**
@@ -29,7 +31,14 @@ class WebsocketProvider extends ServiceProvider
     public function register()
     {
         $this->app->bind(\Listen\Swoole\Facades\WebSocketClient::class, function () {
-            return new WebSocket(config('websocket.host', '127.0.0.1'), config('websocket.port', 9501));
+            return new WebSocket(
+                config('websocket_client.host', '127.0.0.1'),
+                config('websocket_client.port', 9501)
+            );
         });
+
+        $this->app->alias(\Listen\Swoole\Facades\WebSocketClient::class, 'swoole.websocket_client');
+
+        $this->mergeConfigFrom(__DIR__ . '/../../config/websocket_client.php', 'websocket_client');
     }
 }
