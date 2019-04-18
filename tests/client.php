@@ -6,22 +6,25 @@
  * Time: 22:58
  */
 
+namespace Listen\Swoole\Tests;
+
+require __DIR__ . '/../vendor/autoload.php';
+
 if (!extension_loaded('swoole')) {
     throw new \Exception('Swoole Extension Unloaded !');
 }
 
 try {
     // 实例化 websocket 客户端
-    $client = new \Listen\Swoole\Client\WebSocket($host, $port);
+    $client = new \Listen\Swoole\Client\WebSocket('127.0.0.1', 9588);
 
-    // 连接服务器
-    $result = $client->connect();
+    if ($client->connect()) {
+        // 发送消息
+        $client->send("Hello Word \n");
 
-    // 发送消息
-    $client->send("Hello Word \n");
-
-    // 输出服务消息
-    echo $client->recv() . "\n";
+        // 输出服务消息
+        echo "Message: " . $client->recv() . "\n";
+    }
 
 } catch (\Listen\Swoole\Exceptions\WebSocketException $e) {
 

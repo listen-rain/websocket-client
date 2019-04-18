@@ -2,6 +2,11 @@
 
 namespace Listen\Swoole\Client;
 
+use Listen\Swoole\Parser;
+use Listen\Swoole\WebSocketParser;
+use Listen\Swoole\WebSocketFrame;
+use Listen\Swoole\Exceptions\WebSocketException;
+
 class WebSocket
 {
     const VERSION      = '0.1.4';
@@ -48,30 +53,30 @@ class WebSocket
      * @param string $host
      * @param int    $port
      * @param string $path
-     * @throws \Listen\Swoole\WebSocketException
+     * @throws WebSocketException
      */
     function __construct($host, $port = 80, $path = '/')
     {
         if (empty($host)) {
-            throw new \Listen\Swoole\WebSocketException("require websocket server host.");
+            throw new WebSocketException("require websocket server host.");
         }
         $this->haveSwooleEncoder = method_exists('swoole_websocket_server', 'pack');
         $this->host              = $host;
         $this->port              = $port;
         $this->path              = $path;
         $this->key               = $this->generateToken(self::TOKEN_LENGHT);
-        $this->parser            = new \Listen\Swoole\WebSocketParser();
+        $this->parser            = new WebSocketParser();
     }
 
     /**
      * @param string $keyFile
      * @param string $certFile
-     * @throws \Listen\Swoole\WebSocketException
+     * @throws WebSocketException
      */
     function enableCrypto($keyFile = '', $certFile = '')
     {
         if (!extension_loaded('swoole')) {
-            throw new \Listen\Swoole\WebSocketException("require swoole extension.");
+            throw new WebSocketException("require swoole extension.");
         }
         $this->ssl           = true;
         $this->ssl_key_file  = $keyFile;
@@ -84,7 +89,7 @@ class WebSocket
     function __destruct()
     {
         if ($this->connected) {
-            $this->disconnect();
+            // $this->disconnect();
         }
     }
 
@@ -145,7 +150,7 @@ class WebSocket
      */
     function doHandShake($headerBuffer)
     {
-        $header               = \Listen\Swoole\Parser::parseHeader($headerBuffer);
+        $header               = Parser::parseHeader($headerBuffer);
         $_header_key_low_case = array_change_key_case($header, CASE_LOWER);
         if (!isset($_header_key_low_case['sec-websocket-accept'])) {
             $this->disconnect();
@@ -171,8 +176,8 @@ class WebSocket
 
     /**
      * 接收数据
-     * @return bool | Swoole\Http\WebSocketFrame
-     * @throws \Listen\Swoole\WebSocketException
+     * @return bool | WebSocketFrame
+     * @throws WebSocketException
      */
     function recv()
     {
@@ -449,7 +454,7 @@ class WebSocket
     private function hybi10Decode($data)
     {
         if (empty($data)) {
-            throw new \Listen\Swoole\WebSocketException("data is empty");
+            throw new WebSocketException("data is empty");
         }
 
         $bytes      = $data;

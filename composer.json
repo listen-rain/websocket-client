@@ -1,6 +1,7 @@
 {
   "name": "listen/websocket-client",
   "description": "websocket client for php",
+  "keywords"   : ["websocket", "client", "socket"],
   "version": "1.0.1",
   "license": "MIT",
   "authors": [
@@ -10,12 +11,19 @@
     }
   ],
   "require": {
-    "php": ">=7.1"
+    "php": ">=7.1",
+    "illuminate/support": " ~5.5",
+    "laravel/lumen-framework": " ^5.5"
   },
   "autoload": {
     "psr-4": {
       "Listen\\Swoole\\": "src/"
     }
+  },
+  "autoload-dev" : {
+      "psr-4": {
+        "Listen\\Swoole\\Tests\\": "tests/"
+      }
   },
   "minimum-stability": "dev",
   "require-dev": {

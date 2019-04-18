@@ -6,14 +6,16 @@
  * Time: 22:52
  */
 
+namespace Listen\Swoole\Tests;
+
 if (!extension_loaded('swoole')) {
     throw new \Exception('Swoole Extension Unloaded !');
 }
 
-$ws = new  \Swoole\WebSocket\Server('0.0.0.0', '9599');
+$ws = new  \Swoole\WebSocket\Server('0.0.0.0', 9588);
 
 $ws->on('open', function ($ws, $request) {
-    var_dump($request->fd, $request->get, $request->server);
+    // var_dump($request->fd, $request->get, $request->server);
     $ws->push($request->fd, "hello, welcome\n");
 });
 
@@ -26,4 +28,7 @@ $ws->on('close', function ($ws, $fd) {
     echo "client-{$fd} is closed\n";
 });
 
+echo "Server Start \n\n";
+
 $ws->start();
+
