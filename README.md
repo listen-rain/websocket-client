@@ -1,5 +1,13 @@
 # websocket-client
 
+[![Latest Stable Version](https://poser.pugx.org/listen/websocket-client/v/stable)](https://packagist.org/packages/listen/websocket-client)
+[![Total Downloads](https://poser.pugx.org/listen/websocket-client/downloads)](https://packagist.org/packages/listen/websocket-client)
+[![Latest Unstable Version](https://poser.pugx.org/listen/websocket-client/v/unstable)](https://packagist.org/packages/listen/websocket-client)
+[![License](https://poser.pugx.org/listen/websocket-client/license)](https://packagist.org/packages/listen/websocket-client)
+[![Monthly Downloads](https://poser.pugx.org/listen/websocket-client/d/monthly)](https://packagist.org/packages/listen/websocket-client)
+[![Daily Downloads](https://poser.pugx.org/listen/websocket-client/d/daily)](https://packagist.org/packages/listen/websocket-client)
+[![composer.lock](https://poser.pugx.org/listen/websocket-client/composerlock)](https://packagist.org/packages/listen/websocket-client)
+
 [fork from](https://github.com/matyhtf/framework) 
 
 websocket-client 是一个支持 PHP 服务端连接 websocket 服务器的扩展，方便服务端给连接了 websocket 客户端发送实时消息，参考：[matyhtf/framework](https://github.com/matyhtf/framework)
