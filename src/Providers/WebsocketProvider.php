@@ -37,7 +37,7 @@ class WebsocketProvider extends ServiceProvider
             );
         });
 
-        $this->app->alias(\Listen\Swoole\Facades\WebSocketClient::class, 'swoole.websocket_client');
+        $this->app->alias(\Listen\Swoole\Facades\WebSocketClient::class, 'listen.wsclient');
 
         $this->mergeConfigFrom(__DIR__ . '/../../config/websocket_client.php', 'websocket_client');
     }

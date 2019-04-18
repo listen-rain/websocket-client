@@ -39,18 +39,14 @@ WEBSOCKET_PORT=<port>
 
 ```php
 try {
-    // 连接服务器
-    $client = \WebSocketClient::connect();
-   
-    // 发送消息
-    $client->send("Hello Word \n");
+    \WebSocketClient::connect();
     
-    // 输出服务消息
-    echo $client->recv() . "\n";
+    \WebSocketClient::send("hello hahaha\n");
     
-} catch (WebSocketException $e) {
-
-    echo $e->getMessage();
+    echo \WebSocketClient::recv() . "hahaha\n";
+    
+} catch (\Listen\Swoole\Exceptions\WebSocketException $e) {
+    dd($e->getMessage());
 }
 ```
 
@@ -78,4 +74,4 @@ try {
 
 ## 
 
-这是一个初级项目，能够满足基本需求，欢迎有时间的小伙伴贡献优秀代码，持续迭代
+现能够满足 PHP端 发送 websocket消息 的基本需求，欢迎有时间的小伙伴贡献优秀代码，持续迭代
