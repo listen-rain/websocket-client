@@ -7,6 +7,6 @@
  */
 
 return [
-    'host' => env('WEBSOCKET_HOST'),
-    'port' => env('WEBSOCKET_PORT')
+    'host' => env('WEBSOCKET_HOST', '127.0.0.1'),
+    'port' => env('WEBSOCKET_PORT', 9501)
 ];
